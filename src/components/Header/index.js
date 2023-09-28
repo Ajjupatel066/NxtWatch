@@ -43,12 +43,12 @@ const Header = props => (
   <AppTheme.Consumer>
     {value => {
       const {isDarkTheme, toggleTheme, activeTab, changeActiveTab} = value
-      const bgColor = isDarkTheme ? '#000000' : '#ffffff'
+      const bgColor = isDarkTheme ? '#181818' : '#f9f9f9'
       const logoUrl = isDarkTheme
         ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
         : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
 
-      const textColor = isDarkTheme ? '#ffffff' : '#000000'
+      const textColor = isDarkTheme ? '#f9f9f9' : '#181818'
       const popUpBg = isDarkTheme ? '#000000' : '#ffffff'
 
       const onChangeTheme = () => {
@@ -82,15 +82,15 @@ const Header = props => (
       return (
         <NavHeader bgColor={bgColor}>
           <Link to="/">
-            <WebsiteLogo
-              src={logoUrl}
-              alt="website logo"
-              onClick={changeTabHome}
-            />
+            <WebsiteLogo src={logoUrl} alt="website logo" />
           </Link>
 
           <HeaderOptions>
-            <ThemeButton data-testid="theme" onClick={onChangeTheme}>
+            <ThemeButton
+              data-testid="theme"
+              onClick={onChangeTheme}
+              color={textColor}
+            >
               {isDarkTheme ? (
                 <BsBrightnessHigh size={25} color="white" />
               ) : (
@@ -108,7 +108,7 @@ const Header = props => (
             <Popup
               modal
               trigger={
-                <MenuButton>
+                <MenuButton type="button">
                   <GiHamburgerMenu size={25} color={textColor} />
                 </MenuButton>
               }
@@ -205,7 +205,14 @@ const Header = props => (
               )}
             </Popup>
 
-            <Popup modal trigger={<LogoutButton>Logout</LogoutButton>}>
+            <Popup
+              modal
+              trigger={
+                <LogoutButton type="button" data-testid="iconButton">
+                  Logout
+                </LogoutButton>
+              }
+            >
               {close => (
                 <PopupBgContainer>
                   <PopupContainer color={popUpBg}>
@@ -213,10 +220,14 @@ const Header = props => (
                       Are you sure, you want to logout?
                     </Text>
                     <ControllerContainer>
-                      <CancelButton onClick={() => close()}>
+                      <CancelButton
+                        data-testid="closeButton"
+                        type="button"
+                        onClick={() => close()}
+                      >
                         Cancel
                       </CancelButton>
-                      <ConfirmButton onClick={onClickLogout}>
+                      <ConfirmButton type="button" onClick={onClickLogout}>
                         Confirm
                       </ConfirmButton>
                     </ControllerContainer>
@@ -228,7 +239,11 @@ const Header = props => (
             <Popup
               modal
               trigger={
-                <LogoutIconButton onClick={onClickLogout}>
+                <LogoutIconButton
+                  type="button"
+                  data-testid="iconButton"
+                  onClick={onClickLogout}
+                >
                   <FiLogOut size={25} color={textColor} />
                 </LogoutIconButton>
               }
@@ -240,10 +255,14 @@ const Header = props => (
                       Are you sure, you want to logout?
                     </Text>
                     <ControllerContainer>
-                      <CancelButton onClick={() => close()}>
+                      <CancelButton
+                        type="button"
+                        data-testid="closeButton"
+                        onClick={() => close()}
+                      >
                         Cancel
                       </CancelButton>
-                      <ConfirmButton onClick={onClickLogout}>
+                      <ConfirmButton type="button" onClick={onClickLogout}>
                         Confirm
                       </ConfirmButton>
                     </ControllerContainer>

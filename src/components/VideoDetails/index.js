@@ -149,7 +149,7 @@ class VideoDetails extends Component {
           } = videoItemDetails
 
           return (
-            <>
+            <div data-testid="videoItemDetails">
               <ReactPlayer url={videoUrl} controls width="100%" />
               <VideoTitle color={themeColor}>{title}</VideoTitle>
               <ViewsAndControllersContainer>
@@ -158,15 +158,18 @@ class VideoDetails extends Component {
                   {publishedDate}
                 </ViewsAndDate>
                 <ControllerContainer>
-                  <LikeButtonContainer onClick={this.likeVideo}>
+                  <LikeButtonContainer type="button" onClick={this.likeVideo}>
                     <BiLike size={20} color={likeColor} />
                     <ButtonText color={likeColor}>Like</ButtonText>
                   </LikeButtonContainer>
-                  <DisLikeButtonContainer onClick={this.dislikeVideo}>
+                  <DisLikeButtonContainer
+                    type="button"
+                    onClick={this.dislikeVideo}
+                  >
                     <BiDislike size={20} color={disLikeColor} />
                     <ButtonText color={disLikeColor}>DisLike</ButtonText>
                   </DisLikeButtonContainer>
-                  <SavedButtonContainer saved={isSaved}>
+                  <SavedButtonContainer type="button" saved={isSaved}>
                     <BiListPlus size={20} onClick={onClickSave} />
                     <ButtonText>{savedText}</ButtonText>
                   </SavedButtonContainer>
@@ -184,7 +187,7 @@ class VideoDetails extends Component {
                   </ChannelDescription>
                 </ChannelInfo>
               </ChannelContainer>
-            </>
+            </div>
           )
         }}
       </AppTheme.Consumer>
@@ -197,9 +200,7 @@ class VideoDetails extends Component {
     </LoaderContainer>
   )
 
-  onRetry = () => this.setState({videoItemDetails: []}, this.getVideoItemData)
-
-  renderFailureView = () => <FailureView onRetry={this.onRetry} />
+  renderFailureView = () => <FailureView onRetry={this.getVideoItemData} />
 
   renderVideoDetails = () => {
     const {apiStatus} = this.state
@@ -221,17 +222,14 @@ class VideoDetails extends Component {
       <AppTheme.Consumer>
         {value => {
           const {isDarkTheme} = value
-          const navBgColor = isDarkTheme ? '#181818' : '#f9f9f9'
+          const navBgColor = isDarkTheme ? '#000000' : '#ffffff'
 
-          const bgColor = isDarkTheme ? '#000000' : '#ffffff'
+          const bgColor = isDarkTheme ? '#0f0f0f ' : '#f9f9f9'
 
           return (
-            <VideoDetailsRouteContainer
-              data-testid="videoItemDetails"
-              bgColor={navBgColor}
-            >
+            <VideoDetailsRouteContainer data-testid="home" bgColor={navBgColor}>
               <Header />
-              <VideoDetailsContainer bgColor={bgColor}>
+              <VideoDetailsContainer data-testid="home" bgColor={bgColor}>
                 <LeftSection bgColor={bgColor}>
                   <Navigation />
                 </LeftSection>

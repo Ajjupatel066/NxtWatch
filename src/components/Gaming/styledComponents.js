@@ -4,7 +4,7 @@ export const GamingRouteContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: ${props => props.bgColor};
+  background-color: ${props => props.color};
 `
 export const GamingContainer = styled.div`
   display: flex;
@@ -16,9 +16,10 @@ export const LeftSection = styled.div`
   display: flex;
   flex-direction: column;
   width: 25%;
-  background-color: ${props => props.bgColor};
   min-height: 100vh;
-
+  position: sticky;
+  position: -webkit-sticky;
+  background-color: ${props => props.color};
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -28,7 +29,7 @@ export const RightSection = styled.div`
   flex-direction: column;
   width: 75%;
   margin-top: 80px;
-  overflow-y: auto;
+  overflow-y: scroll;
   margin-top: 0px;
   @media screen and(min-width:768px) {
     width: 75%;

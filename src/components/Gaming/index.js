@@ -80,7 +80,7 @@ class Gaming extends Component {
         const headingSectionColor = isDarkTheme ? '#212121 ' : '#f4f4f4'
 
         return (
-          <>
+          <div data-testid="gaming">
             <HeadingSection color={headingSectionColor}>
               <Icon color={iconBg}>
                 <SiYoutubegaming size={30} color="red" />
@@ -92,7 +92,7 @@ class Gaming extends Component {
                 <GamingCard key={eachGame.id} videoDetails={eachGame} />
               ))}
             </GamingList>
-          </>
+          </div>
         )
       }}
     </AppTheme.Consumer>
@@ -127,14 +127,13 @@ class Gaming extends Component {
         {value => {
           const {isDarkTheme} = value
           const navBgColor = isDarkTheme ? '#000000' : '#ffffff'
-
-          const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
+          const backgroundColor = isDarkTheme ? '#181818' : '#f9f9f9'
 
           return (
-            <GamingRouteContainer bgColor={navBgColor}>
+            <GamingRouteContainer data-testid="home" color={navBgColor}>
               <Header />
-              <GamingContainer data-testid="gaming" bgColor={bgColor}>
-                <LeftSection bgColor={bgColor}>
+              <GamingContainer data-testid="home" color={backgroundColor}>
+                <LeftSection color={backgroundColor}>
                   <Navigation />
                 </LeftSection>
                 <RightSection>{this.renderGamingVideos()}</RightSection>

@@ -7,6 +7,7 @@ export const ListItem = styled.li`
   flex-direction: column;
   align-self: center;
   margin-bottom: 30px;
+  background-color: ${props => props.color};
   @media screen and (min-width: 576px) {
     width: 220px;
     margin-right: 10px;

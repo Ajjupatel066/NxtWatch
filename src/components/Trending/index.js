@@ -19,6 +19,7 @@ import {
   HeadingSection,
   Icon,
   Heading,
+  SearchVideoContainer,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -88,7 +89,7 @@ class Trending extends Component {
           const headingSectionColor = isDarkTheme ? '#212121 ' : '#f4f4f4'
 
           return (
-            <>
+            <SearchVideoContainer data-testid="trending">
               <HeadingSection color={headingSectionColor}>
                 <Icon color={iconBg}>
                   <HiFire size={30} color="red" />
@@ -100,7 +101,7 @@ class Trending extends Component {
                   <TrendingVideo key={eachVideo.id} videoDetails={eachVideo} />
                 ))}
               </TrendingList>
-            </>
+            </SearchVideoContainer>
           )
         }}
       </AppTheme.Consumer>
@@ -140,14 +141,13 @@ class Trending extends Component {
         {value => {
           const {isDarkTheme} = value
           const navBgColor = isDarkTheme ? '#000000' : '#ffffff'
-
-          const bgColor = isDarkTheme ? '#0f0f0f ' : '#f9f9f9'
+          const backgroundColor = isDarkTheme ? '#181818' : '#f9f9f9'
 
           return (
-            <TrendingRouteContainer bgColor={navBgColor}>
+            <TrendingRouteContainer data-testid="home" bgColor={navBgColor}>
               <Header />
-              <TrendingContainer data-testid="trending" bgColor={bgColor}>
-                <LeftSection bgColor={bgColor}>
+              <TrendingContainer data-testid="home" bgColor={backgroundColor}>
+                <LeftSection bgColor={backgroundColor}>
                   <Navigation />
                 </LeftSection>
                 <RightSection>{this.renderTrendingVideos()}</RightSection>

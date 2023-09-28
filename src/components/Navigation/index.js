@@ -21,7 +21,7 @@ const Navigation = () => (
   <AppTheme.Consumer>
     {value => {
       const {isDarkTheme, changeActiveTab, activeTab} = value
-      const themeColor = isDarkTheme ? '#000000' : '#ffffff'
+      const bgColor = isDarkTheme ? '#181818' : '#f9f9f9'
       const textColor = isDarkTheme ? '#ffffff' : '#000000'
       const activeTabBg = isDarkTheme ? '#424242' : '#e2e8f0'
 
@@ -43,7 +43,7 @@ const Navigation = () => (
 
       return (
         <>
-          <NavBar color={themeColor}>
+          <NavBar color={bgColor}>
             <NavItemsContainer>
               <NavLink to="/">
                 <NavItem

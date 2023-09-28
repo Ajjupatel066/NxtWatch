@@ -31,19 +31,19 @@ class Trending extends Component {
         const headingSectionColor = isDarkTheme ? '#212121 ' : '#f4f4f4'
 
         return (
-          <>
+          <div data-testid="savedVideos">
             <HeadingSection color={headingSectionColor}>
               <Icon color={iconBg}>
                 <BiListPlus size={30} color="red" />
               </Icon>
-              <Heading color={headingColor}>Trending</Heading>
+              <Heading color={headingColor}>Saved Videos</Heading>
             </HeadingSection>
             <SavedList>
               {savedVideos.map(eachVideo => (
                 <SavedVideoCard key={eachVideo.id} videoDetails={eachVideo} />
               ))}
             </SavedList>
-          </>
+          </div>
         )
       }}
     </AppTheme.Consumer>
@@ -75,15 +75,18 @@ class Trending extends Component {
       <AppTheme.Consumer>
         {value => {
           const {isDarkTheme, savedVideos} = value
-          const bgColor = isDarkTheme ? '#0f0f0f ' : '#f9f9f9'
 
+          const backgroundColor = isDarkTheme ? '#181818' : '#f9f9f9'
           const navBgColor = isDarkTheme ? '#000000' : '#ffffff'
 
           return (
-            <SavedVideosRouteContainer bgColor={navBgColor}>
+            <SavedVideosRouteContainer data-testid="home" bgColor={navBgColor}>
               <Header />
-              <SavedVideosContainer data-testid="savedVideos" bgColor={bgColor}>
-                <LeftSection bgColor={bgColor}>
+              <SavedVideosContainer
+                data-testid="home"
+                bgColor={backgroundColor}
+              >
+                <LeftSection bgColor={backgroundColor}>
                   <Navigation />
                 </LeftSection>
                 <RightSection>

@@ -10,7 +10,8 @@ export const NavHeader = styled.nav`
   align-items: center;
   padding-left: 5px;
   padding-right: 5px;
-
+  position: sticky;
+  scroll-behavior: smooth;
   @media screen and (min-width: 768px) {
     padding-left: 30px;
     padding-right: 30px;

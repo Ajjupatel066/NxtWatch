@@ -18,11 +18,19 @@ export const LeftSection = styled.div`
   width: 25%;
   background-color: ${props => props.bgColor};
   min-height: 90vh;
-
+  position: sticky;
+  position: -webkit-sticky;
   @media screen and (max-width: 768px) {
     display: none;
   }
 `
+export const SearchVideoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  padding: 30px;
+`
+
 export const RightSection = styled.div`
   display: flex;
   flex-direction: column;

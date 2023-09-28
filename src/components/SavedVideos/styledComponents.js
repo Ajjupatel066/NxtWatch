@@ -18,7 +18,8 @@ export const LeftSection = styled.div`
   width: 25%;
   background-color: ${props => props.bgColor};
   min-height: 100vh;
-
+  position: sticky;
+  position: -webkit-sticky;
   @media screen and (max-width: 768px) {
     display: none;
   }

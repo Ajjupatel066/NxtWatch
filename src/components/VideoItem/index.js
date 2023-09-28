@@ -30,10 +30,11 @@ const VideoItem = props => {
       {value => {
         const {isDarkTheme} = value
         const themeColor = isDarkTheme ? '#ffffff' : '#000000'
+        const bgColor = isDarkTheme ? '#181818' : '#f9f9f9'
 
         return (
           <NavLink to={`/videos/${id}`}>
-            <ListItem>
+            <ListItem color={bgColor}>
               <CardImage src={thumbnailUrl} alt="video thumbnail" />
               <VideoDetailsContainer>
                 <ChannelLogo src={channelProfileLogo} alt="channel logo" />

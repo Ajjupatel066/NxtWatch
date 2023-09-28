@@ -105,7 +105,7 @@ class HomeRoute extends Component {
     // console.log(videosData)
 
     return (
-      <VideosList>
+      <VideosList data-testid="home">
         {videosData.map(eachVideo => (
           <VideoItem key={eachVideo.id} videoDetails={eachVideo} />
         ))}
@@ -113,16 +113,7 @@ class HomeRoute extends Component {
     )
   }
 
-  onRetry = () => {
-    this.setState(
-      {
-        search: '',
-      },
-      this.getHomeVideosData,
-    )
-  }
-
-  renderFailureView = () => <FailureView onRetry={this.onRetry} />
+  renderFailureView = () => <FailureView onRetry={this.getHomeVideosData} />
 
   renderLoadingView = () => (
     <LoaderContainer data-testid="loader" className="loader">
@@ -200,7 +191,7 @@ class HomeRoute extends Component {
           const bgColor = isDarkTheme ? '#000000' : '#ffffff'
 
           return (
-            <HomeRouteContainer bgColor={bgColor}>
+            <HomeRouteContainer data-testid="home" bgColor={bgColor}>
               <Header />
               <HomeContainer data-testid="home" bgColor={backgroundColor}>
                 <LeftSection bgColor={backgroundColor}>
@@ -218,7 +209,7 @@ class HomeRoute extends Component {
                         alt="nxt watch logo"
                       />
                       <BannerDescription>
-                        Buy Nxt Watch Premium
+                        Buy Nxt Watch Premium prepaid plans with UPI
                       </BannerDescription>
                       <GetNowButton>GET IT NOW</GetNowButton>
                     </BannerContent>
@@ -228,7 +219,7 @@ class HomeRoute extends Component {
                       onClick={this.close}
                       data-testid="close"
                     >
-                      <MdClose />
+                      <MdClose size={20} color="#231f20" />
                     </CloseButton>
                   </Banner>
                   <VideosContainer>
