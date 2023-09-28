@@ -86,7 +86,6 @@ export const SearchContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 20px;
-  background-color: ${props => props.bgColor};
   color: #64748b;
   @media screen and (max-width: 576px) {
     width: 300px;
@@ -101,7 +100,6 @@ export const Search = styled.input`
   border: 1px solid #909090;
   line-height: 20px;
   width: 300px;
-  background-color: ${props => props.bgColor};
   color: #64748b;
   @media screen and (max-width: 576px) {
     width: 250px;
@@ -114,7 +112,6 @@ export const SearchButton = styled.button`
   padding: 8px;
   width: 50px;
   line-height: 20px;
-  background-color: ${props => props.bgColor};
 `
 
 export const LoaderContainer = styled.div`

@@ -75,17 +75,14 @@ class Trending extends Component {
       <AppTheme.Consumer>
         {value => {
           const {isDarkTheme, savedVideos} = value
-          const navBgColor = isDarkTheme ? '#181818' : '#f9f9f9'
+          const bgColor = isDarkTheme ? '#0f0f0f ' : '#f9f9f9'
 
-          const bgColor = isDarkTheme ? '#000000' : '#ffffff'
+          const navBgColor = isDarkTheme ? '#000000' : '#ffffff'
 
           return (
-            <SavedVideosRouteContainer
-              data-testid="savedVideos"
-              bgColor={navBgColor}
-            >
+            <SavedVideosRouteContainer bgColor={navBgColor}>
               <Header />
-              <SavedVideosContainer bgColor={bgColor}>
+              <SavedVideosContainer data-testid="savedVideos" bgColor={bgColor}>
                 <LeftSection bgColor={bgColor}>
                   <Navigation />
                 </LeftSection>

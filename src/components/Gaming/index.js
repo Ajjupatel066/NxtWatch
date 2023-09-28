@@ -70,38 +70,33 @@ class Gaming extends Component {
     }
   }
 
-  renderSuccessView = () => {
-    const {gamingVideosList} = this.state
-    // console.log(gamingVideosList)
+  renderSuccessView = () => (
+    <AppTheme.Consumer>
+      {value => {
+        const {isDarkTheme} = value
+        const {gamingVideosList} = this.state
+        const iconBg = isDarkTheme ? '#424242' : '#e2e8f0'
+        const headingColor = isDarkTheme ? '#ffffff' : '#000000'
+        const headingSectionColor = isDarkTheme ? '#212121 ' : '#f4f4f4'
 
-    return (
-      <AppTheme.Consumer>
-        {value => {
-          const {isDarkTheme} = value
-
-          const iconBg = isDarkTheme ? '#424242' : '#e2e8f0'
-          const headingColor = isDarkTheme ? '#ffffff' : '#000000'
-          const headingSectionColor = isDarkTheme ? '#212121 ' : '#f4f4f4'
-
-          return (
-            <>
-              <HeadingSection color={headingSectionColor}>
-                <Icon color={iconBg}>
-                  <SiYoutubegaming size={30} color="red" />
-                </Icon>
-                <Heading color={headingColor}>Gaming</Heading>
-              </HeadingSection>
-              <GamingList>
-                {gamingVideosList.map(eachGame => (
-                  <GamingCard key={eachGame.id} videoDetails={eachGame} />
-                ))}
-              </GamingList>
-            </>
-          )
-        }}
-      </AppTheme.Consumer>
-    )
-  }
+        return (
+          <>
+            <HeadingSection color={headingSectionColor}>
+              <Icon color={iconBg}>
+                <SiYoutubegaming size={30} color="red" />
+              </Icon>
+              <Heading color={headingColor}>Gaming</Heading>
+            </HeadingSection>
+            <GamingList>
+              {gamingVideosList.map(eachGame => (
+                <GamingCard key={eachGame.id} videoDetails={eachGame} />
+              ))}
+            </GamingList>
+          </>
+        )
+      }}
+    </AppTheme.Consumer>
+  )
 
   renderLoadingView = () => (
     <LoaderContainer data-testid="loader" className="loader">
@@ -109,10 +104,7 @@ class Gaming extends Component {
     </LoaderContainer>
   )
 
-  onRetry = () =>
-    this.setState({gamingVideosList: []}, this.getGamingVideosData)
-
-  renderFailureView = () => <FailureView onRetry={this.onRetry} />
+  renderFailureView = () => <FailureView onRetry={this.getGamingVideosData} />
 
   renderGamingVideos = () => {
     const {apiStatus} = this.state
@@ -134,14 +126,14 @@ class Gaming extends Component {
       <AppTheme.Consumer>
         {value => {
           const {isDarkTheme} = value
-          const navBgColor = isDarkTheme ? '#181818' : '#f9f9f9'
+          const navBgColor = isDarkTheme ? '#000000' : '#ffffff'
 
-          const bgColor = isDarkTheme ? '#000000' : '#ffffff'
+          const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
 
           return (
-            <GamingRouteContainer data-testid="gaming" bgColor={navBgColor}>
+            <GamingRouteContainer bgColor={navBgColor}>
               <Header />
-              <GamingContainer bgColor={bgColor}>
+              <GamingContainer data-testid="gaming" bgColor={bgColor}>
                 <LeftSection bgColor={bgColor}>
                   <Navigation />
                 </LeftSection>

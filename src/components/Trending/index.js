@@ -139,14 +139,14 @@ class Trending extends Component {
       <AppTheme.Consumer>
         {value => {
           const {isDarkTheme} = value
-          const navBgColor = isDarkTheme ? '#181818' : '#f9f9f9'
+          const navBgColor = isDarkTheme ? '#000000' : '#ffffff'
 
-          const bgColor = isDarkTheme ? '#000000' : '#ffffff'
+          const bgColor = isDarkTheme ? '#0f0f0f ' : '#f9f9f9'
 
           return (
-            <TrendingRouteContainer data-testid="trending" bgColor={navBgColor}>
+            <TrendingRouteContainer bgColor={navBgColor}>
               <Header />
-              <TrendingContainer bgColor={bgColor}>
+              <TrendingContainer data-testid="trending" bgColor={bgColor}>
                 <LeftSection bgColor={bgColor}>
                   <Navigation />
                 </LeftSection>

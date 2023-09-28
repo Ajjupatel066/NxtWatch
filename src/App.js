@@ -15,7 +15,7 @@ import AppTheme from './context/AppTheme'
 
 class App extends Component {
   state = {
-    isDarkTheme: true,
+    isDarkTheme: false,
     activeTab: 'HOME',
     savedVideos: [],
   }

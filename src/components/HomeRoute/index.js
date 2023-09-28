@@ -195,15 +195,15 @@ class HomeRoute extends Component {
       <AppTheme.Consumer>
         {value => {
           const {isDarkTheme} = value
-          const navBgColor = isDarkTheme ? '#181818' : '#f9f9f9'
+          const backgroundColor = isDarkTheme ? '#181818' : '#f9f9f9'
           const iconColor = isDarkTheme ? '#f9f9f9' : '#181818'
           const bgColor = isDarkTheme ? '#000000' : '#ffffff'
 
           return (
-            <HomeRouteContainer data-testid="home" bgColor={navBgColor}>
+            <HomeRouteContainer bgColor={bgColor}>
               <Header />
-              <HomeContainer bgColor={bgColor}>
-                <LeftSection bgColor={bgColor}>
+              <HomeContainer data-testid="home" bgColor={backgroundColor}>
+                <LeftSection bgColor={backgroundColor}>
                   <Navigation />
                 </LeftSection>
                 <RightSection>
@@ -232,20 +232,18 @@ class HomeRoute extends Component {
                     </CloseButton>
                   </Banner>
                   <VideosContainer>
-                    <SearchContainer bgColor={navBgColor}>
+                    <SearchContainer>
                       <Search
                         type="search"
                         placeholder="Search"
                         onChange={this.updateSearch}
                         onKeyDown={this.onEnterSearchInput}
                         value={search}
-                        bgColor={navBgColor}
                       />
                       <SearchButton
                         type="button"
                         data-testid="searchButton"
                         onClick={this.getHomeVideosData}
-                        bgColor={navBgColor}
                       >
                         <BsSearch className="search-icon" color={iconColor} />
                       </SearchButton>
