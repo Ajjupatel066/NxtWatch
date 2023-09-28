@@ -5,6 +5,7 @@ import {HiFire} from 'react-icons/hi'
 import AppTheme from '../../context/AppTheme'
 import Header from '../Header'
 import Navigation from '../Navigation'
+import FailureView from '../FailureView'
 
 import TrendingVideo from '../TrendingVideo'
 
@@ -112,6 +113,12 @@ class Trending extends Component {
     </LoaderContainer>
   )
 
+  onRetry = () => {
+    this.setState({trendingVideos: []}, this.getTrendingVideosData)
+  }
+
+  renderFailureView = () => <FailureView onRetry={this.onRetry} />
+
   renderTrendingVideos = () => {
     const {apiStatus} = this.state
 
@@ -119,7 +126,7 @@ class Trending extends Component {
       case apiStatusConstants.success:
         return this.renderSuccessView()
       case apiStatusConstants.failure:
-        return null
+        return this.renderFailureView()
       case apiStatusConstants.inProgress:
         return this.renderLoadingView()
       default:
@@ -137,9 +144,9 @@ class Trending extends Component {
           const bgColor = isDarkTheme ? '#000000' : '#ffffff'
 
           return (
-            <TrendingRouteContainer bgColor={navBgColor}>
+            <TrendingRouteContainer data-testid="trending" bgColor={navBgColor}>
               <Header />
-              <TrendingContainer data-testid="trending" bgColor={bgColor}>
+              <TrendingContainer bgColor={bgColor}>
                 <LeftSection bgColor={bgColor}>
                   <Navigation />
                 </LeftSection>

@@ -54,6 +54,13 @@ export const BannerLogo = styled.img`
     width: 100px;
   }
 `
+export const CloseButton = styled.button`
+  border: 0px;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+`
+
 export const BannerDescription = styled.p`
   font-size: 20px;
   width: 350px;

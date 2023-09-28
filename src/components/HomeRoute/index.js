@@ -34,6 +34,7 @@ import {
   Heading,
   Description,
   RetryButton,
+  CloseButton,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -221,11 +222,14 @@ class HomeRoute extends Component {
                       </BannerDescription>
                       <GetNowButton>GET IT NOW</GetNowButton>
                     </BannerContent>
-                    <MdClose
+
+                    <CloseButton
+                      type="button"
                       onClick={this.close}
                       data-testid="close"
-                      cursor="pointer"
-                    />
+                    >
+                      <MdClose />
+                    </CloseButton>
                   </Banner>
                   <VideosContainer>
                     <SearchContainer bgColor={navBgColor}>

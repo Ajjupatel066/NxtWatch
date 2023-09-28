@@ -4,7 +4,7 @@ import Cookies from 'js-cookie'
 import ReactPlayer from 'react-player'
 
 import {BiLike, BiDislike, BiListPlus} from 'react-icons/bi'
-
+import FailureView from '../FailureView'
 import Header from '../Header'
 import Navigation from '../Navigation'
 import AppTheme from '../../context/AppTheme'
@@ -197,6 +197,10 @@ class VideoDetails extends Component {
     </LoaderContainer>
   )
 
+  onRetry = () => this.setState({videoItemDetails: []}, this.getVideoItemData)
+
+  renderFailureView = () => <FailureView onRetry={this.onRetry} />
+
   renderVideoDetails = () => {
     const {apiStatus} = this.state
 
@@ -204,7 +208,7 @@ class VideoDetails extends Component {
       case apiStatusConstants.success:
         return this.renderSuccessView()
       case apiStatusConstants.failure:
-        return null
+        return this.renderFailureView()
       case apiStatusConstants.inProgress:
         return this.renderLoadingView()
       default:
@@ -222,12 +226,12 @@ class VideoDetails extends Component {
           const bgColor = isDarkTheme ? '#000000' : '#ffffff'
 
           return (
-            <VideoDetailsRouteContainer bgColor={navBgColor}>
+            <VideoDetailsRouteContainer
+              data-testid="videoItemDetails"
+              bgColor={navBgColor}
+            >
               <Header />
-              <VideoDetailsContainer
-                data-testid="savedVideos"
-                bgColor={bgColor}
-              >
+              <VideoDetailsContainer bgColor={bgColor}>
                 <LeftSection bgColor={bgColor}>
                   <Navigation />
                 </LeftSection>

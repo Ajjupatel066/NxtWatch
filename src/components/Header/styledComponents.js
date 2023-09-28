@@ -16,9 +16,14 @@ export const NavHeader = styled.nav`
     padding-right: 30px;
   }
 `
-export const Logo = styled.img`
+export const WebsiteLogo = styled.img`
   width: 160px;
 `
+export const CloseButton = styled.button`
+  border: 0px;
+  background-color: transparent;
+`
+
 export const HeaderOptions = styled.div`
   display: flex;
   gap: 20px;

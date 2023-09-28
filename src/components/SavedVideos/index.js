@@ -80,9 +80,12 @@ class Trending extends Component {
           const bgColor = isDarkTheme ? '#000000' : '#ffffff'
 
           return (
-            <SavedVideosRouteContainer bgColor={navBgColor}>
+            <SavedVideosRouteContainer
+              data-testid="savedVideos"
+              bgColor={navBgColor}
+            >
               <Header />
-              <SavedVideosContainer data-testid="savedVideos" bgColor={bgColor}>
+              <SavedVideosContainer bgColor={bgColor}>
                 <LeftSection bgColor={bgColor}>
                   <Navigation />
                 </LeftSection>

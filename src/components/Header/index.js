@@ -16,7 +16,7 @@ import AppTheme from '../../context/AppTheme'
 
 import {
   NavHeader,
-  Logo,
+  WebsiteLogo,
   HeaderOptions,
   ThemeButton,
   ProfileImageContainer,
@@ -36,6 +36,7 @@ import {
   CancelButton,
   ConfirmButton,
   LogoutIconButton,
+  CloseButton,
 } from './styledComponents'
 
 const Header = props => (
@@ -80,8 +81,12 @@ const Header = props => (
 
       return (
         <NavHeader bgColor={bgColor}>
-          <Link to="/" onClick={changeTabHome}>
-            <Logo src={logoUrl} alt="website logo" />
+          <Link to="/">
+            <WebsiteLogo
+              src={logoUrl}
+              alt="website logo"
+              onClick={changeTabHome}
+            />
           </Link>
 
           <HeaderOptions>
@@ -110,7 +115,7 @@ const Header = props => (
             >
               {close => (
                 <MenuPopUpBgContainer bgColor={bgColor}>
-                  <NavContainer>
+                  <NavContainer bgColor={bgColor}>
                     <NavItemsContainer>
                       <NavLink to="/">
                         <NavItem
@@ -192,7 +197,9 @@ const Header = props => (
                         </NavItem>
                       </NavLink>
                     </NavItemsContainer>
-                    <AiOutlineClose onClick={() => close()} color={textColor} />
+                    <CloseButton onClick={() => close()} data-testid="close">
+                      <AiOutlineClose color={textColor} />
+                    </CloseButton>
                   </NavContainer>
                 </MenuPopUpBgContainer>
               )}

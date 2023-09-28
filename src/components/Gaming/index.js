@@ -3,7 +3,7 @@ import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
 import {SiYoutubegaming} from 'react-icons/si'
 import GamingCard from '../GamingCard'
-
+import FailureView from '../FailureView'
 import AppTheme from '../../context/AppTheme'
 import Header from '../Header'
 import Navigation from '../Navigation'
@@ -109,6 +109,11 @@ class Gaming extends Component {
     </LoaderContainer>
   )
 
+  onRetry = () =>
+    this.setState({gamingVideosList: []}, this.getGamingVideosData)
+
+  renderFailureView = () => <FailureView onRetry={this.onRetry} />
+
   renderGamingVideos = () => {
     const {apiStatus} = this.state
 
@@ -116,7 +121,7 @@ class Gaming extends Component {
       case apiStatusConstants.success:
         return this.renderSuccessView()
       case apiStatusConstants.failure:
-        return null
+        return this.renderFailureView()
       case apiStatusConstants.inProgress:
         return this.renderLoadingView()
       default:
@@ -134,9 +139,9 @@ class Gaming extends Component {
           const bgColor = isDarkTheme ? '#000000' : '#ffffff'
 
           return (
-            <GamingRouteContainer bgColor={navBgColor}>
+            <GamingRouteContainer data-testid="gaming" bgColor={navBgColor}>
               <Header />
-              <GamingContainer data-testid="gaming" bgColor={bgColor}>
+              <GamingContainer bgColor={bgColor}>
                 <LeftSection bgColor={bgColor}>
                   <Navigation />
                 </LeftSection>
